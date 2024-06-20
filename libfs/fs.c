@@ -14,8 +14,6 @@
 #define MAX_DATA_BLOCKS 8192
 #define UNUSED -1 // set unused indexes to -1
 
-/* TODO: Phase 1 */
-
 // check if disk is opened or not
 int disk_open = 0;
 
@@ -155,7 +153,6 @@ int read_blocks(uint16_t *FAT_buf) {
 // ---------------- API FUNCTIONS ------------------------
 
 int fs_mount(const char *diskname) { 
-	/* TODO: Phase 1 */
 
 	if (!strlen(diskname)) {
 		printf("no length\n");
@@ -248,7 +245,6 @@ int fs_umount(void) {
 }
 
 int fs_info(void) { 
-	/* TODO: Phase 1 */
 
 	if (!disk_open) {
 		return -1;
@@ -267,7 +263,6 @@ int fs_info(void) {
 }
 
 int fs_create(const char *filename) { 
-	/* TODO: Phase 2 */
 
 	if (!is_mounted || 
 		!valid_filename_len(filename) ||
@@ -312,7 +307,6 @@ int fs_delete(const char *filename) {
 		}
 	}
 
-	/* TODO: Phase 2 */
 	if (!is_mounted || 
 		!valid_filename_len(filename) ||
 		!file_exists(filename) ||
@@ -359,7 +353,6 @@ int fs_delete(const char *filename) {
 }
 
 int fs_ls(void) { 
-	/* TODO: Phase 2 */
 	if (!is_mounted) return -1;
 
 	printf("FS Ls:\n");
@@ -373,7 +366,7 @@ int fs_ls(void) {
 }
 
 int fs_open(const char *filename) { 
-	/* TODO: Phase 3 */
+
 	if(!is_mounted || 
 		!valid_filename_len(filename) ||
 		!file_exists(filename) || 
@@ -409,7 +402,7 @@ int fs_open(const char *filename) {
 }
 
 int fs_close(int fd) { 
-	/* TODO: Phase 3 */ 
+
 	if (!is_mounted ||
 		!valid_fd(fd) ||
 		!is_open(fd)) 
@@ -427,7 +420,7 @@ int fs_close(int fd) {
 }
 
 int fs_stat(int fd) {
-	/* TODO: Phase 3 */
+
 	if (!is_mounted ||
 		!valid_fd(fd) ||
 		!is_open(fd)) 
@@ -448,7 +441,7 @@ int fs_stat(int fd) {
 }
 
 int fs_lseek(int fd, size_t offset) { 
-	/* TODO: Phase 3 */
+
 
 	if (!is_mounted || 
 		!valid_fd(fd) ||
@@ -483,7 +476,7 @@ int find_empty_FAT_entry(void){
 }
 
 int fs_write(int fd, void* buf, size_t count){
-	/* TODO: Phase 4 */ 
+
 	if(!is_mounted ||
 	   !valid_fd(fd) ||
 	   !is_open(fd) ||
@@ -582,7 +575,7 @@ int fs_write(int fd, void* buf, size_t count){
 }
 
 int fs_read(int fd, void *buf, size_t count) { 
-	/* TODO: Phase 4 */ 
+ 
 	if(!is_mounted ||
 	   !valid_fd(fd) ||
 	   !is_open(fd) ||
